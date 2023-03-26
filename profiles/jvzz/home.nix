@@ -6,7 +6,7 @@ in
 {
   imports = [
     ../../user/shared
-    # ./packages.nix
+    ./packages-new.nix
   ];
 
   home.username = user;
