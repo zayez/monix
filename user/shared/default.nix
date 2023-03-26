@@ -2,18 +2,17 @@
 
 {
   imports = [
-    ./packages.nix
     ./gui.nix
     ../programs/alacritty.nix
     ../programs/git.nix
     ../programs/password-store.nix
     ../programs/shells
     ../programs/vim.nix
-    # ../programs/vscode
+    ../programs/vscode
     ../programs/tmux.nix
     ../programs/mpv.nix
     ../programs/rofi.nix
-    # ../programs/firefox
+    ../programs/firefox
     ../programs/fzf.nix
     ../programs/zathura.nix
     ../services/picom.nix
@@ -23,6 +22,6 @@
     ../services/network-manager.nix
   ];
 
-  # programs.home-manager.enable = true;
+  programs.home-manager.enable = true;
 
 }
