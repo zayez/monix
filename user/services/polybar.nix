@@ -72,14 +72,14 @@ in
         label-active = 4;
       };
 
-      "module/player-status" = {
-        type = "custom/script";
-        exec = "${config.home.homeDirectory}/.scripts/player/player-status";
-        interval = 2;
-        label-maxlen = 60;
-        label-font = 2;
-        label-active = 2;
-      };
+      # "module/player-status" = {
+      #   type = "custom/script";
+      #   exec = "${config.home.homeDirectory}/.scripts/player/player-status";
+      #   interval = 2;
+      #   label-maxlen = 60;
+      #   label-font = 2;
+      #   label-active = 2;
+      # };
 
       "module/powermenu" = {
         type = "custom/menu";
