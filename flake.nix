@@ -33,7 +33,7 @@
           modules = [
             nixpkgs.nixosModules.notDetected
             home-manager.nixosModules.home-manager
-            (import (./hosts + "/${host}.nix"))
+            (import (./hosts + "/${host}"))
           ];
         };
       };
