@@ -19,6 +19,11 @@ in
     (import ../../system/shared (args // { user = user; name = name; }))
   ];
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.devices = [ "/dev/sda" ];
+
   console.keyMap = keyboardLayout;
   networking.hostName = hostName;
   time.timeZone = timeZone;
