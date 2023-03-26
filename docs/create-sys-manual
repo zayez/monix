@@ -1,0 +1,44 @@
+#!/bin/sh
+dir="$HOME/.dotfiles/docs"
+ext="pdf"
+input="$(find $dir/*.md ! -name 'README.md' | sort)"
+output="$dir/documentation.${ext}"
+header="$dir/header.tex"
+
+notify-send -u low -i "emblem-warning" "[1/2] pandoc" "Documentation started  processing"
+
+# # build html
+pandoc -s $input -f gfm \
+    -V geometry:a4paper \
+    -V geometry:margin=2cm \
+    -V mainfont="Noto Sans" \
+    -V monofont="Noto Sans Mono" \
+    --highlight-style breezeDark \
+    --pdf-engine=xelatex \
+    --toc \
+    -H $header \
+    -o "documentation.html"
+
+# build pdf
+pandoc -s $input -f gfm \
+    -V geometry:a4paper \
+    -V geometry:margin=2cm \
+    -V mainfont="Noto Sans" \
+    -V monofont="Noto Sans Mono" \
+    --include-before-body "$dir/cover.tex" \
+    --highlight-style breezeDark \
+    --pdf-engine=xelatex \
+    --toc \
+    -H $header \
+    -o $output
+
+if [ $? -ne 0 ]
+then
+  notify-send -u "critical" -i "dialog-error" "pandoc" "There was an error in the processing."
+  exit 1
+fi
+
+notify-send -u low -i "vcs-normal" "[2/2] pandoc" "Documentation finished processing."
+exit 0
+
+

@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="belsier" />
+  <title>.dotfiles Documentation</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Noto Sans;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Noto Sans Mono;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        background-color: #232629;
+        color: #7a7c7d;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #7a7c7d;  padding-left: 4px; }
+    div.sourceCode
+      { color: #cfcfc2; background-color: #232629; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #cfcfc2; } /* Normal */
+    code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+    code span.an { color: #3f8058; } /* Annotation */
+    code span.at { color: #2980b9; } /* Attribute */
+    code span.bn { color: #f67400; } /* BaseN */
+    code span.bu { color: #7f8c8d; } /* BuiltIn */
+    code span.cf { color: #fdbc4b; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #3daee9; } /* Char */
+    code span.cn { color: #27aeae; font-weight: bold; } /* Constant */
+    code span.co { color: #7a7c7d; } /* Comment */
+    code span.cv { color: #7f8c8d; } /* CommentVar */
+    code span.do { color: #a43340; } /* Documentation */
+    code span.dt { color: #2980b9; } /* DataType */
+    code span.dv { color: #f67400; } /* DecVal */
+    code span.er { color: #da4453; text-decoration: underline; } /* Error */
+    code span.ex { color: #0099ff; font-weight: bold; } /* Extension */
+    code span.fl { color: #f67400; } /* Float */
+    code span.fu { color: #8e44ad; } /* Function */
+    code span.im { color: #27ae60; } /* Import */
+    code span.in { color: #c45b00; } /* Information */
+    code span.kw { color: #cfcfc2; font-weight: bold; } /* Keyword */
+    code span.op { color: #cfcfc2; } /* Operator */
+    code span.ot { color: #27ae60; } /* Other */
+    code span.pp { color: #27ae60; } /* Preprocessor */
+    code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+    code span.sc { color: #3daee9; } /* SpecialChar */
+    code span.ss { color: #da4453; } /* SpecialString */
+    code span.st { color: #f44f4f; } /* String */
+    code span.va { color: #27aeae; } /* Variable */
+    code span.vs { color: #da4453; } /* VerbatimString */
+    code span.wa { color: #da4453; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  \usepackage{longtable}\setlength{\LTleft}{0em}
+  \usepackage{graphicx}
+
+  \usepackage{fancyvrb,newverbs,xcolor}
+
+
+
+  \let\stdsection\section
+  \renewcommand\section{\newpage\stdsection}
+
+  \definecolor{Light}{HTML}{F4F4F4}
+
+  \let\oldtexttt\texttt
+  \renewcommand{\texttt}[1]{
+    \colorbox{Light}{\oldtexttt{#1}}
+  }
+
+  \usepackage{enumitem}
+  \usepackage{amsfonts}
+
+  % level one
+  \setlist[itemize,1]{label=$\square$}
+  % level two
+  \setlist[itemize,2]{label=$\circ$}
+  % level three
+  \setlist[itemize,3]{label=$\star$}
+
+
+  \usepackage{hyperref}
+
+  \hypersetup{
+    pdftitle={.dotfiles Documentation},
+    pdfauthor={belsier},
+    pdfsubject={pandoc},
+    pdfstartview=FitW,
+    pdfkeywords={pandoc,pdf,xelatex}
+  }
+
+  \usepackage[fontsize=12pt]{scrextend}
+
+
+  \usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[LE,LO]{\leftmark}
+  \fancyhead[RE,RO]{\rightmark}
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">.dotfiles Documentation</h1>
+<p class="author">belsier</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#introduction">Introduction</a>
+<ul>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#multiboot">Multiboot</a></li>
+<li><a href="#structure">Structure</a></li>
+</ul></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#desktop">Desktop</a></li>
+<li><a href="#system">System</a></li>
+<li><a href="#user">User</a></li>
+<li><a href="#scripts">Scripts</a></li>
+<li><a href="#hosts">Hosts</a></li>
+<li><a href="#profiles">Profiles</a></li>
+</ul></li>
+<li><a href="#desktop-1">Desktop</a>
+<ul>
+<li><a href="#xmonad">XMonad</a>
+<ul>
+<li><a href="#launchers">Launchers</a></li>
+<li><a href="#windows--workspaces">Windows &amp; Workspaces</a></li>
+<li><a href="#scratchpads">Scratchpads</a></li>
+<li><a href="#layouts">Layouts</a></li>
+<li><a href="#power">Power</a></li>
+<li><a href="#multimedia">Multimedia</a></li>
+<li><a href="#actions">Actions</a></li>
+<li><a href="#mouse">Mouse</a></li>
+<li><a href="#manuals">Manuals</a></li>
+</ul></li>
+<li><a href="#lxqt">LXQt</a></li>
+</ul></li>
+<li><a href="#system-1">System</a>
+<ul>
+<li><a href="#configuration-1">Configuration</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#programs">Programs</a></li>
+</ul></li>
+<li><a href="#user-1">User</a>
+<ul>
+<li><a href="#configuration-2">Configuration</a></li>
+<li><a href="#programs-1">Programs</a>
+<ul>
+<li><a href="#firefox">Firefox</a></li>
+<li><a href="#shells">Shells</a></li>
+<li><a href="#visual-studio-code">Visual Studio Code</a></li>
+<li><a href="#other-programs">Other programs</a></li>
+</ul></li>
+<li><a href="#services-1">Services</a></li>
+</ul></li>
+<li><a href="#scripts-1">Scripts</a>
+<ul>
+<li><a href="#actions-1">Actions</a></li>
+<li><a href="#launchers-1">Launchers</a></li>
+<li><a href="#player">Player</a></li>
+<li><a href="#power-1">Power</a></li>
+<li><a href="#screen">Screen</a></li>
+<li><a href="#services-2">Services</a></li>
+<li><a href="#system-2">System</a></li>
+</ul></li>
+<li><a href="#hosts-1">Hosts</a>
+<ul>
+<li><a href="#athens">Athens</a>
+<ul>
+<li><a href="#default-module">Default module</a></li>
+<li><a href="#file-systems">File systems</a></li>
+<li><a href="#multiboot-support">Multiboot support</a></li>
+<li><a href="#common">Common</a></li>
+<li><a href="#shared">Shared</a></li>
+<li><a href="#customizing-your-host">Customizing your host</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#profiles-2">Profiles</a>
+<ul>
+<li><a href="#atticus">Atticus</a>
+<ul>
+<li><a href="#default-programs">Default programs</a></li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#installed-packages">Installed packages</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="introduction">Introduction</h1>
+<p>This is a set of configurations for a NixOS-based operating system. In the future, multiple hosts and users should be available to choose from. For now though, there's only two hosts and a single user but it will be easy to create new hosts and users based on the available modules.</p>
+<h2 id="setup">Setup</h2>
+<p>This project can be both used in a existing NixOS installation as in a new one.</p>
+<p>To use this in a new NixOS installation:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /etc/mnt/nixos</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone github.com/belsier/dotfiles</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> dotfiles/hosts/athens/default.nix configuration.nix</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">nixos-install</span></span></code></pre></div>
+<h2 id="configuration">Configuration</h2>
+<p>For now, some adicional steps are needed to complete the configuration, mainly setting some symlinks and enabling execution of a couple of scripts. This can be done using the <strong>bootstrap.sh</strong> script.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> dotfiles</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x bootstrap.sh</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">./bootstrap.sh</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u-x bootstrap.sh</span></code></pre></div>
+<h2 id="multiboot">Multiboot</h2>
+<p>To enable support for multiboot, you need to set the attribute <em>useOSProber</em> to true. You can find it in the default configuration of the choosen host. After building the system with <em>OSProber</em>, you can use the generated grub configuration to import it directly using the <em>multiboot.nix</em> file, this way you don't need to keep the OSProber active for every time you build your system.</p>
+<h2 id="structure">Structure</h2>
+<p>The basic directory structure of the project is described below.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> bootstrap.sh</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> config</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── conky</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── xmonad</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> docs</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> hosts</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── athens</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── default.nix</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── desktop.nix</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── file-systems.nix</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── fonts.nix</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── multiboot-template.nix</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── multiboot.nix</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   └── system-packages.nix</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── rome</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── configuration.nix</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── file-systems.nix</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       └── packages.nix</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> profiles</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── atticus</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── config.nix</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── gui.nix</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── home.nix</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       ├── overlays</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>       └── packages.nix</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> system</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── common.nix</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── programs</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── dconf.nix</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   └── gnupg.nix</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── services</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── dropbox.nix</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   ├── mongodb.nix</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   │   └── redshift.nix</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── shared.nix</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> themes</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> user</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   ├── programs</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── services</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> wallpaper</span></code></pre></div>
+<ul>
+<li><code>bootstrap.sh</code>: the install script.</li>
+<li><code>config</code>: config directory.</li>
+<li><code>docs</code>: cheat-sheets, docs, etc.</li>
+<li><code>hosts</code>: the main configuration is choosen from one of the hosts.</li>
+<li><code>profiles</code>: userland configuration modules.</li>
+<li><code>scripts</code>: user scripts organized by type.</li>
+<li><code>system</code>: system configuration modules.</li>
+<li><code>themes</code>: themes for rofi and the like.</li>
+<li><code>user</code>: user configuration modules.</li>
+<li><code>wallpaper</code>: the system wallpaper.</li>
+</ul>
+<h1 id="overview">Overview</h1>
+<p>This chapter will give a brief overview of the components that comprise this project. The next chapter will explore each one in depth.</p>
+<h2 id="desktop">Desktop</h2>
+<p>All gui-based operating systems use a desktop environment. Desktop environments contain many features, including (but not limited to):</p>
+<ul>
+<li>The look and feel of the system</li>
+<li>The organization of the desktop</li>
+<li>How the user navigates the desktop</li>
+</ul>
+<p>This project uses XMonad (a dynamic window manager) as the default desktop environment. LXQt (a desktop manager) is also available and can be used with XMonad.</p>
+<h2 id="system">System</h2>
+<p>System is a collection os modules related to the configurations at the <em>system</em> level, is where you'll find modules that manage things like: desktop environment, file systems, fonts, multiboot support and system packages.</p>
+<h2 id="user">User</h2>
+<p>User is a collection os modules related to the configurations at the <em>user</em> level, is where you'll find modules that manage things like: graphical user interface, user packages and overlays.</p>
+<h2 id="scripts">Scripts</h2>
+<p>Scripts are a collection of useful bash scripts organized by categories.</p>
+<h2 id="hosts">Hosts</h2>
+<p>A host will be responsible for composing system modules to configure a brand new NixOS configuration.</p>
+<h2 id="profiles">Profiles</h2>
+<p>A host will be responsible for composing user modules to configure a brand new home-managed configuration.</p>
+<h1 id="desktop-1">Desktop</h1>
+<p>This chapter will focus on the two available desktop environments: XMonad &amp; LXQt.</p>
+<h2 id="xmonad">XMonad</h2>
+<p>XMonad is the default user interface for this system. It uses a highly customized configuration that can be further modified. Below is a list of shortcuts nicely organized by categories.</p>
+<h3 id="launchers">Launchers</h3>
+<p>Launchers will be the main way to launch a new program. Rofi is the default launcher, you can use it to launch a new program or to search for one running.</p>
+<p><img src="images/rofi.jpg" title="Rofi example" alt="Rofi image" /> Rofi example.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;d</code></td>
+<td><em>Rofi: run</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;p</code></td>
+<td><em>Rofi: window</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;c</code></td>
+<td><em>Rofi: clipboard entries</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;F3&gt;</code></td>
+<td><em>Open firefox home</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;&lt;F3&gt;</code></td>
+<td><em>Open firefox surf</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;F8&gt;</code></td>
+<td><em>Open firefox personal</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;&lt;F8&gt;</code></td>
+<td><em>Open firefox work</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;e</code></td>
+<td><em>Open nautilus</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="windows--workspaces">Windows &amp; Workspaces</h3>
+<p>Nothing out of the ordinary, this are the default key bindings used by the XMonad.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;1-9</code></td>
+<td><em>Switch workspace</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;1-9</code></td>
+<td><em>Move focused window to workspace</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;q</code></td>
+<td><em>Quit focused window</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;l</code></td>
+<td><em>Expand right</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;h</code></td>
+<td><em>Expand left</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;k</code></td>
+<td><em>Move focus up</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;j</code></td>
+<td><em>Move focus down</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;enter</code></td>
+<td><em>Open terminal</em></td>
+</tr>
+</tbody>
+</table>
+<!-- | `<Mod>b`          | _Open or focus browser_            | -->
+
+<h3 id="scratchpads">Scratchpads</h3>
+<p>One of the most important features of this configuration are the scratchpads. Mainly the ones for the terminals. The main terminal can be invoked by simply pressing F1, which will open a top terminal ala guake.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;s</code></td>
+<td><em>Toggle Cmus</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Alt&gt;s</code></td>
+<td><em>Toggle Spotify</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;F1&gt;</code></td>
+<td><em>Toggle top terminal scratchpad</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;F1&gt; or &lt;Mod&gt;a</code></td>
+<td><em>toggle bottom terminal scratchpad</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;o</code></td>
+<td><em>Toggle center terminal scratchpad</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;F4&gt;</code></td>
+<td><em>Toggle Vscode</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;F9&gt;</code></td>
+<td><em>Toggle todo</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;F10&gt;</code></td>
+<td><em>Toggle notes</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;F12&gt;</code></td>
+<td><em>Toggle gotop scratchpad</em></td>
+</tr>
+</tbody>
+</table>
+<!-- `<Mod>j` toggle tmux scratchpad -->
+
+<!-- `<Mod>i` toggle images browser (Nomacs) -->
+
+<h3 id="layouts">Layouts</h3>
+<p>There are six types of window layouts available in this configuration:</p>
+<ul>
+<li>Full</li>
+<li>Tall</li>
+<li>Spiral</li>
+<li>Grid</li>
+<li>Mirror</li>
+<li>Tabbed</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Space&gt;</code></td>
+<td><em>Next layout</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;b</code></td>
+<td><em>Toggle bar</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="power">Power</h3>
+<p>Power management is done with systemd. Options available are: Lock, suspend, restard and shutdown.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Pause</code></td>
+<td><em>Lock session</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;Pause</code></td>
+<td><em>Suspend</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Home</code></td>
+<td><em>Restart</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;End</code></td>
+<td><em>Shutdown</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="multimedia">Multimedia</h3>
+<p>Multimedia control is done with the help of <em>playerctl</em>. The status of the curretly running multimedia will be displayed at the center of the status bar.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Home</code></td>
+<td><em>Toggle sound</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;Up</code></td>
+<td><em>Increases volume by 5%</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Down</code></td>
+<td><em>Decreases volume by 5%</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;Up</code></td>
+<td><em>Increases volume by +15%</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Shift&gt;Down</code></td>
+<td><em>Decreases volume by 15%</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;Right</code></td>
+<td><em>Plays next track</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Left</code></td>
+<td><em>Plays previous track</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="actions">Actions</h3>
+<p>Capturing a screenshot is easily done using the <strong>Print</strong> key. The default behaviour is to capture a region.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Print&gt;</code></td>
+<td><em>Screenshot the region</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Print&gt;</code></td>
+<td><em>screenshot the whole screen</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Backspace&gt;</code></td>
+<td><em>Recompile and restart xmonad</em></td>
+</tr>
+</tbody>
+</table>
+<!-- `<Mod>~` set random wallpaper from `~/Wallpapers` -->
+
+<h3 id="mouse">Mouse</h3>
+<p>Keeps the default behaviour of XMonad.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Left button</code></td>
+<td><em>Set the window to floating mode and move by dragging</em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;Middle button</code></td>
+<td><em>Set the window to the top of the stack</em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;Right</code></td>
+<td><em>Set the window to floating mode and resize by dragging</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="manuals">Manuals</h3>
+<p>Shows a manual.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;Home&gt;</code></td>
+<td>Show manual (this one)</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>&lt;Mod&gt;&lt;End&gt;</code></td>
+<td>Show NixOS installation manual</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lxqt">LXQt</h2>
+<p>This is empty for now.</p>
+<h1 id="system-1">System</h1>
+<h2 id="configuration-1">Configuration</h2>
+<p>The system configuration is defined by a specified host. The default host of this system is <strong>athens</strong>. The host is responsible for setting configurations such as: desktop environment, file systems, fonts, multiboot support and system packages.</p>
+<p>The system configuration will manage programs and services at <em>system</em> level.</p>
+<h2 id="services">Services</h2>
+<p>System services are services managed by <em>systemd</em>. The default host will enable two services: dropbox and redshift.</p>
+<p>Below is a is of available services:</p>
+<ul>
+<li><code>Dropbox</code>: a file hosting service.</li>
+<li><code>Redshift</code>: adjusts the color temperature of your screen according to your surroundings. You can change the coordinates using the <em>location</em> attribute in the host's configuration.</li>
+</ul>
+<h2 id="programs">Programs</h2>
+<p>System programs are programs that will be available for all users of the system.</p>
+<p>Below is a list of available programs:</p>
+<ul>
+<li><code>GnuPG</code>: enables you to secure your files using state of the art cryptography.</li>
+</ul>
+<h1 id="user-1">User</h1>
+<h2 id="configuration-2">Configuration</h2>
+<p>The user configuration is defined by a specified profile. The default profile of this system is <strong>atticus</strong>. The profile is responsible for setting configurations such as: graphical user interface, user packages and overlays.</p>
+<p>The user configuration will enable services and programs at <em>user</em> level.</p>
+<h2 id="programs-1">Programs</h2>
+<p>User programs are only available for a specific user of the system.</p>
+<h3 id="firefox">Firefox</h3>
+<p>Firefox is the default browser of the system. The firefox module provides a variety of improvements over the standard installation such as: robust settings, celebrated extensions, multiple profiles and visual adjustments to the Proton interface.</p>
+<h4 id="settings">Settings</h4>
+<p>You don't have to worry about messing with the <em>about:config</em> no more. The firefox module comes with sane default settings like: privacy, disabling telemetry, block requests asking to access your device and much more.</p>
+<h4 id="extensions">Extensions</h4>
+<p>The firefox module also includes a couple of extensions by default. You can see the list below.</p>
+<ul>
+<li>bitwarden</li>
+<li>cookie-autodelete</li>
+<li>darkreader</li>
+<li>multi-account-containers</li>
+<li>ublock-origin</li>
+<li>umatrix</li>
+</ul>
+<h4 id="profiles-1">Profiles</h4>
+<p>Available profiles are:</p>
+<ul>
+<li>home</li>
+<li>surf</li>
+<li>personal</li>
+<li>work</li>
+<li>private</li>
+</ul>
+<h3 id="shells">Shells</h3>
+<p>Shells is a collection of modules related to shell.</p>
+<h4 id="fish">Fish</h4>
+<p>Fish comes with vi mode enabled by default, a collection of abbreviations and a aliases.</p>
+<h4 id="starship">Starship</h4>
+<p>The minimal, blazing-fast, and infinitely customizable prompt for any shell!</p>
+<h4 id="zsh">Zsh</h4>
+<p>The Z shell is the default unix shell of the system. The module enables oh-my-zsh by default.</p>
+<h3 id="visual-studio-code">Visual Studio Code</h3>
+<p>Visual Studio Code is a source-code editor made by Microsoft. The module comes with a list of extensions and a set of user settings by default.</p>
+<h3 id="other-programs">Other programs</h3>
+<ul>
+<li><p><code>Alacritty</code>: a free and open-source GPU accelerated terminal emulator focused on performance and simplicity. The module comes with a set of configurations, such as setting <strong>fish</strong> as its default shell.</p></li>
+<li><p><code>fzf</code>: fzf is a general-purpose command-line fuzzy finder.</p></li>
+<li><p><code>git</code>: a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.</p></li>
+<li><p><code>mpv</code>: a free media player for the command line. It supports a wide variety of media file formats, audio and video codecs, and subtitle types.</p></li>
+<li><p><code>pass</code>: The standard Unix password manager.</p></li>
+<li><p><code>Rofi</code>: a window switcher, run dialog, ssh-launcher and dmenu replacement. It is the standard application launcher of the system. The module uses the <strong>slate</strong> theme.</p></li>
+<li><p><code>tmux</code>: a terminal multiplexer for Unix-like operating systems.</p></li>
+<li><p><code>vim</code>: The ubiquitous text editor.</p></li>
+<li><p><code>zathura</code>: a highly customizable document viewer with vi-styled keybindings.</p></li>
+</ul>
+<h2 id="services-1">Services</h2>
+<p>User services are services managed by <em>systemd</em>. The default user will enable a couple of services by default.</p>
+<p>Below is a list of available services:</p>
+<ul>
+<li><p><code>Dunst</code>: a lightweight replacement for the notification daemons provided by most desktop environments.</p></li>
+<li><p><code>NetworkManager</code>: a system network service that manages your network devices and connections and attempts to keep network connectivity active when available.</p></li>
+<li><p><code>Picom</code>: a standalone compositor for Xorg, suitable for use with window managers that do not provide compositing.</p></li>
+<li><p><code>polybar</code>: A fast and easy-to-use status bar.</p></li>
+<li><p><code>screen-locker</code>: a module that uses the program <em>betterlockscreen</em> to manage screen-locking.</p></li>
+</ul>
+<h1 id="scripts-1">Scripts</h1>
+<p>This chapter will describe the available scripts of the system.</p>
+<h2 id="actions-1">Actions</h2>
+<p>This are simple scripts that are available in the fish path by default and you can run then simply by typing the script name in the shell.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>cheat</code></td>
+<td>Displays a cheatsheet of specified command.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>clipboard-clear</code></td>
+<td>Clears the clipboard</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>getlyrics</code></td>
+<td>Search for lyrics of the current song being played.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>journal</code></td>
+<td>Creates a new entry in your journal using vim.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>rona</code></td>
+<td>Display corona virus status of specified country.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>set-scheme</code></td>
+<td>Set the scheme using pywal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>set-volume</code></td>
+<td>Change the volume.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>set-wal</code></td>
+<td>Sets the wallpaper.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>translate-only</code></td>
+<td>Only translate text.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>translate-text</code></td>
+<td>Translate and write to a file.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>vb-list</code></td>
+<td>List virtualbox machines.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>vb-start</code></td>
+<td>Starts specified virtualbox in headless mode.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>vb-stop</code></td>
+<td>Stops specified virtualbox.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>wttr</code></td>
+<td>Show weather information for your region.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>ytaudio</code></td>
+<td>Download youtube audio.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>ytboth</code></td>
+<td>Download both audio and video.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>ytclip</code></td>
+<td>Download youtube clip.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>ytvideo</code></td>
+<td>Download a youtube video.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="launchers-1">Launchers</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>firefox-{profile}</code></td>
+<td>Launch a firefox profile.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>rofid</code></td>
+<td>Launch rofi run</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>rofip</code></td>
+<td>Launch rofi window</td>
+</tr>
+</tbody>
+</table>
+<h2 id="player">Player</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>player-next</code></td>
+<td>Play the next track</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>player-play</code></td>
+<td>Toggle play</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>player-previous</code></td>
+<td>Play the previous track</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>player-seek-ahead</code></td>
+<td>Seek forwards 5 seconds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>player-seek-before</code></td>
+<td>Seek backwads 5 seconds</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>player-status</code></td>
+<td>Displays current track information</td>
+</tr>
+</tbody>
+</table>
+<h2 id="power-1">Power</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>lock-session</code></td>
+<td>Locks the session</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>reboot</code></td>
+<td>Reboot the system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>shutdown</code></td>
+<td>Shutdown the system</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>shutdown</code></td>
+<td>Suspends the system</td>
+</tr>
+</tbody>
+</table>
+<h2 id="screen">Screen</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>screenshot</code></td>
+<td>Take a screenshot of the desktop</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>screenshot-delay</code></td>
+<td>Take a screenshot after 5 seconds</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>screencap-start</code></td>
+<td>Starts a video screen capture</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>screencap-start</code></td>
+<td>Stops a video screen capture</td>
+</tr>
+</tbody>
+</table>
+<h2 id="services-2">Services</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>start-redshift</code></td>
+<td>Starts redshift service</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>stop-redshift</code></td>
+<td>Stops redshift service</td>
+</tr>
+</tbody>
+</table>
+<h2 id="system-2">System</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Script name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>create-docs</code></td>
+<td>Creates this document</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>nixos-cleanup</code></td>
+<td>Cleans up the system</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>nixos-switch</code></td>
+<td>Runs the NixOS build switch</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>nixos-update</code></td>
+<td>Runs the NixOS upgrade</td>
+</tr>
+</tbody>
+</table>
+<h1 id="hosts-1">Hosts</h1>
+<p>As already mentioned, the host will be responsible for setting configurations such as: desktop environment, file systems, fonts, multiboot support, system packages as well as manage programs and services at <em>system</em> level.</p>
+<p>The idea of this project is about using one of the available hosts as a <strong>blueprint</strong> to derivate another host and use the blueprint as a starting point. So, you shouldn't use a <em>host</em> directly. Instead, you should copy an available host and use as a base for your own host configuration.</p>
+<p>The hosts here are only a reference, they are not meant to be used.</p>
+<h2 id="athens">Athens</h2>
+<p><strong>Athens</strong> is considered the <em>default</em> host of this project, its recommended to use it as the <em>blueprint</em> for new hosts. The main module (<em>default.nix</em> always) is located at the <em>hosts/athens</em> directory and we're going to start there.</p>
+<h3 id="default-module">Default module</h3>
+<p>The default module will be the core of the host configuration. At the top of the file you can edit some basic settings like: username, keyboard layout, hostname, timeZone and the flag to use OSProber (will see this later).</p>
+<p>In the the default module you will be able to manage configuration to boot, virtualisation and location. This file should be lean. At the beginning of the module you should notice an <em>imports</em>, this will allow us to <em>compose</em> our modules in a nice way. First, we will look at <em>file-systems</em>.</p>
+<h3 id="file-systems">File systems</h3>
+<p>The <em>file systems</em> module is straightforward: you set a file system, tell where to mount, what device (by UUID or label) and what file system is and that's it.</p>
+<h3 id="multiboot-support">Multiboot support</h3>
+<p>If you want to enable multiboot with other operating systems you can simply enable the <em>OSProber</em> in the default module and the system will figure out what you have installed and it will generate a grub configuration automatically when you build the system.</p>
+<p>However, the build command will take a long time and you probably don't want to waste time every time you build your system configuration. What you can do is only enable the OSProber the first time you build your configuration and then you can use the grub configuration generated by NixOS to get the menu entry for the others systems.</p>
+<p>First, use the template available to generate a <em>multiboot</em> file:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/host/</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> multiboot-template.nix multiboot.nix</span></code></pre></div>
+<p>Open the file to get an idea of what kind of stuff you gonna need to paste here.</p>
+<p>Now, grab the desired new entries in the grub configuration file. You can check the entries by running (with sudo):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> /boot/grub/grub.cfg</span></code></pre></div>
+<p>Paste the entries into <code>multiboot.nix</code> file.</p>
+<p>Be aware, you only want the menuentry for the others systems, you don't need the menu entries for NixOS or any other stuff in there. If you look into the default module you can check the attribute <code>boot.loader.grub.extraEntries</code> to understand what is doing: It simply adds entries to grub.</p>
+<h3 id="common">Common</h3>
+<p>The most common configurations will be enabled in this module, sound, pulseaudio, network-manager, the default shell (<em>zsh</em>), setting up the user and it's home directory, the default locate and the system version are all done in the <code>common.nix</code> module.</p>
+<h3 id="shared">Shared</h3>
+<p>The shared module composes all of the default modules of the base system: desktop environment, base fonts, system packages, programs and services.</p>
+<h3 id="customizing-your-host">Customizing your host</h3>
+<p>This chapter should've given you an idea of how you should compose your own host. For modules that can be re-used by multiple hosts, you can follow the pattern used in the <em>athens</em> host and save the module in the system directory. For modules that are less reusable, they can be saved in the hosts directory.</p>
+<h1 id="profiles-2">Profiles</h1>
+<p>Profiles are like hosts, but at <em>user</em> level. A profile will be responsible for setting configurations such as: graphical user interface, user packages, overlays as well as manage programs and services (at <em>user</em> level).</p>
+<p>Much like <em>hosts</em>, <em>profiles</em> are about using one of the available <em>profiles</em> as a <strong>blueprint</strong> to derivate another <em>profile</em>. And like <em>hosts</em>, <em>profiles</em> shouldn't be used directly. Instead, you should copy an available profile and use as a base for your own configuration.</p>
+<h2 id="atticus">Atticus</h2>
+<p><strong>Atticus</strong> is considered the <em>default</em> profile of this project, its recommended to use it as the <em>blueprint</em> for new profiles. The main module (<em>home.nix</em>) is located at the <em>profiles/atticus</em> directory and you should set your username in this file.</p>
+<p>The same principles used in the <em>hosts</em> can be aplied here: Modules should be lean and composable.</p>
+<h3 id="default-programs">Default programs</h3>
+<p>A list of the default programs used for the main activities in the operating system.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Type</th>
+<th>Program</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">Editor</td>
+<td><em><a href="https://vim.org/">Vim</a></em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Launcher</td>
+<td><em><a href="https://github.com/davatorium/rofi">Rofi</a></em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Shell</td>
+<td><em><a href="https://fishshell.com/">Fish</a></em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Status bar</td>
+<td><em><a href="https://polybar.github.io/">Polybar</a></em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Terminal</td>
+<td><em><a href="https://github.com/alacritty/alacritty">Alacritty</a></em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">Window manager</td>
+<td><em><a href="https://xmonad.org/">XMonad</a></em></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">Screen locker</td>
+<td><em><a href="github.com/pavanjadhaw/betterlockscreen">Betterlockscreen</a></em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="themes">Themes</h3>
+<p>List of the GTK themes used in the default configuration.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Type</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">GTK Theme</td>
+<td><em><a href="https://github.com/dracula/gtk">Dracula</a></em></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">GTK Icon Theme</td>
+<td><em><a href="https://github.com/vinceliuice/WhiteSur-gtk-theme">WhiteSur</a></em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="installed-packages">Installed packages</h3>
+<p>A list of all the user's installed packages via home-manager.</p>
+<ol type="1">
+<li><p>Comunication</p>
+<ul>
+<li>signal-desktop</li>
+</ul></li>
+<li><p>Desktop</p>
+<ul>
+<li>betterlockscreen</li>
+<li>conky</li>
+<li>feh</li>
+<li>maim</li>
+<li>xssproxy</li>
+</ul></li>
+<li><p>Design/Modeling</p>
+<ul>
+<li>gimp</li>
+<li>inkscape</li>
+<li>dia</li>
+</ul></li>
+<li><p>Development</p>
+<ul>
+<li>sqlite</li>
+<li>sqlitebrowser</li>
+<li>vscode</li>
+<li>insomnia</li>
+<li>robo3t</li>
+<li>gnupg</li>
+<li>openssh</li>
+</ul></li>
+<li><p>Download management</p>
+<ul>
+<li>nicotine-plus</li>
+<li>qbittorrent</li>
+<li>youtube-dl</li>
+</ul></li>
+<li><p>File management</p>
+<ul>
+<li>ranger</li>
+<li>unrar</li>
+<li>unzip</li>
+<li>xclip</li>
+<li>zip</li>
+</ul></li>
+<li><p>Gaming</p>
+<ul>
+<li>retroarch</li>
+</ul></li>
+<li><p>GTK</p>
+<ul>
+<li>nautilus</li>
+<li>ant-theme</li>
+</ul></li>
+<li><p>Internet</p>
+<ul>
+<li>google-chrome</li>
+<li>firefox</li>
+</ul></li>
+<li><p>LXQt</p>
+<ul>
+<li>lxappearance</li>
+</ul></li>
+<li><p>Miscelaneaus</p>
+<ul>
+<li>anki</li>
+<li>calibre</li>
+<li>libnotify</li>
+</ul></li>
+<li><p>Multimedia</p>
+<ul>
+<li>audacity</li>
+<li>cmus</li>
+<li>glyr</li>
+<li>ffmpug-full</li>
+<li>playerctl</li>
+<li>mpv</li>
+<li>spotify</li>
+</ul></li>
+<li><p>Office</p>
+<ul>
+<li>calc</li>
+<li>libreoffice</li>
+<li>okular</li>
+<li>zathura</li>
+</ul></li>
+<li><p>Terminal</p>
+<ul>
+<li>cava</li>
+<li>cmatrix</li>
+<li>entr</li>
+<li>gotop</li>
+<li>killall</li>
+<li>neofetch</li>
+<li>pywal</li>
+<li>zbar</li>
+</ul></li>
+</ol>
+</body>
+</html>

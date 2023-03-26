@@ -1,0 +1,45 @@
+\usepackage{longtable}\setlength{\LTleft}{0em}
+\usepackage{graphicx}
+
+\usepackage{fancyvrb,newverbs,xcolor}
+
+
+
+\let\stdsection\section
+\renewcommand\section{\newpage\stdsection}
+
+\definecolor{Light}{HTML}{F4F4F4}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{
+  \colorbox{Light}{\oldtexttt{#1}}
+}
+
+\usepackage{enumitem}
+\usepackage{amsfonts}
+
+% level one
+\setlist[itemize,1]{label=$\square$}
+% level two
+\setlist[itemize,2]{label=$\circ$}
+% level three
+\setlist[itemize,3]{label=$\star$}
+
+
+\usepackage{hyperref}
+
+\hypersetup{
+  pdftitle={.dotfiles Documentation},
+  pdfauthor={belsier},
+  pdfsubject={pandoc},
+  pdfstartview=FitW,
+  pdfkeywords={pandoc,pdf,xelatex}
+}
+
+\usepackage[fontsize=12pt]{scrextend}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,LO]{\leftmark}
+\fancyhead[RE,RO]{\rightmark}

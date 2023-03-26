@@ -1,0 +1,139 @@
+.dotfiles
+├── README.md
+├── bootstrap.sh
+├── config
+│   ├── conky
+│   │   └── conky.conf
+│   └── xmonad
+│       ├── lib
+│       ├── xmobar.hs
+│       ├── xmonad-x86_64-linux
+│       ├── xmonad.errors
+│       ├── xmonad.hi
+│       ├── xmonad.hs
+│       └── xmonad.o
+├── cover.jpg
+├── cover.tex
+├── docs
+│   ├── 1-overview.md
+│   ├── 2-system.md
+│   └── 3-interface.md
+├── header.tex
+├── hosts
+│   ├── athens
+│   │   ├── default.nix
+│   │   ├── desktop.nix
+│   │   ├── file-systems.nix
+│   │   ├── fonts.nix
+│   │   ├── multiboot-template.nix
+│   │   ├── multiboot.nix
+│   │   └── system-packages.nix
+│   └── rome
+│       ├── configuration.nix
+│       ├── file-systems.nix
+│       └── packages.nix
+├── images
+│   └── rofi.jpg
+├── profiles
+│   └── atticus
+│       ├── config.nix
+│       ├── gui.nix
+│       ├── home.nix
+│       ├── overlays
+│       └── packages.nix
+├── result
+├── scripts
+│   ├── ankify-imgs
+│   ├── cheat
+│   ├── cmd
+│   │   ├── clipboard
+│   │   ├── firefox-home
+│   │   ├── firefox-personal
+│   │   ├── firefox-private
+│   │   ├── firefox-surf
+│   │   ├── firefox-work
+│   │   ├── get-nixos-cheatsheet
+│   │   ├── get-nixos-install-cheatsheet
+│   │   ├── get-wallpaper
+│   │   ├── picom-xmonad
+│   │   ├── playerctl
+│   │   ├── power
+│   │   ├── redshift-start
+│   │   ├── redshift-stop
+│   │   ├── rofid
+│   │   ├── rofip
+│   │   ├── screenshot
+│   │   ├── screenshot-delay
+│   │   └── screenshot-region
+│   ├── cmus
+│   │   └── cmus-status
+│   ├── dicwrit
+│   ├── get_current_book
+│   ├── getlyrics
+│   ├── i3-volume
+│   ├── journal
+│   ├── lookup
+│   ├── player-status
+│   ├── rona
+│   ├── set-scheme
+│   ├── set-volume
+│   ├── set-wal
+│   ├── system
+│   │   ├── create-docs
+│   │   ├── get-vscode-cur-exts
+│   │   ├── nixos-cleanup
+│   │   ├── nixos-switch
+│   │   └── nixos-update
+│   ├── translate-only
+│   ├── translate-write
+│   ├── vb-list
+│   ├── vb-start
+│   ├── vb-stop
+│   ├── vid-to-x264
+│   ├── vidrec-start
+│   ├── vidrec-stop
+│   ├── wttr
+│   ├── ytaudio
+│   ├── ytboth
+│   ├── ytclip
+│   └── ytvideo
+├── shell.nix
+├── structure.txt
+├── system
+│   ├── common.nix
+│   ├── programs
+│   │   ├── dconf.nix
+│   │   └── gnupg.nix
+│   ├── services
+│   │   ├── dropbox.nix
+│   │   ├── mongodb.nix
+│   │   └── redshift.nix
+│   └── shared.nix
+├── themes
+│   └── rofi
+│       └── slate.rasi
+├── user
+│   ├── programs
+│   │   ├── alacritty.nix
+│   │   ├── firefox
+│   │   ├── fzf.nix
+│   │   ├── git.nix
+│   │   ├── gnome.nix
+│   │   ├── mpv.nix
+│   │   ├── password-store.nix
+│   │   ├── rofi.nix
+│   │   ├── shells
+│   │   ├── template.nix
+│   │   ├── tmux.nix
+│   │   ├── vim.nix
+│   │   ├── vscode
+│   │   ├── xmonad.nix
+│   │   └── zathura.nix
+│   └── services
+│       ├── dropbox.nix
+│       ├── dunst.nix
+│       ├── network-manager.nix
+│       ├── picom.nix
+│       ├── polybar.nix
+│       └── screen-locker.nix
+└── wallpaper
