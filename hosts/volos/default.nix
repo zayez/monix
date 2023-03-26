@@ -13,8 +13,8 @@ in
   [
     ../../profiles/jvzz
     ./hardware-configuration.nix
-    /etc/nixos/hardware-configuration.nix
-    ./file-systems.nix
+    # /etc/nixos/hardware-configuration.nix
+    # ./file-systems.nix
     (import ../../system/common.nix (args // { user = user; name = name; }))
     (import ../../system/shared (args // { user = user; name = name; }))
   ];
@@ -29,14 +29,7 @@ in
     longitude = -51.21;
   };
 
-  # boot
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda";
-  # boot.loader.grub.useOSProber = useOSProber;
-  # boot.loader.grub.extraEntries = import ./multiboot.nix;
-  boot.kernelModules = [ "kvm-amd" ];
-  # boot.kernel.sysctl = { "net.ipv4.ip_forward" = 1; };
+
 
   # virtualisation
   virtualisation.libvirtd.enable = false;
