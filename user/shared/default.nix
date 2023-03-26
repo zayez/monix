@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  programs.home-manager.enable = true;
+
   imports = [
     ./gui.nix
     ../programs/alacritty.nix
@@ -22,6 +24,5 @@
     ../services/network-manager.nix
   ];
 
-  programs.home-manager.enable = true;
 
 }
