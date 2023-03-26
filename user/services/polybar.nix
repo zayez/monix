@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 
   colors = {
     bg = "#121621";
@@ -21,7 +21,7 @@ in
 {
   services.polybar = {
     enable = true;
-    package = unstable.polybar.override {
+    package = pkgs.polybar.override {
       i3GapsSupport = true;
       pulseSupport = true;
       githubSupport = true;
