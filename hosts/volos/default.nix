@@ -23,6 +23,7 @@ in
   boot.loader.grub.version = 2;
   # boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.devices = [ "/dev/sda" ];
+  boot.loader.grub.useOSProbe = useOSProbe
 
   console.keyMap = keyboardLayout;
   networking.hostName = hostName;
