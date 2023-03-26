@@ -1,5 +1,10 @@
 { config, ...}:
 {
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/nixos";
+    fsType = "ext4";
+    # options = [ "noatime" "nodiratime" ]; # ssd
+  };
   # fileSystems."/media/warehouse" = {
   #   device = "/dev/disk/by-uuid/159b0eeb-b035-4443-b338-249ec218a8ca";
   #   fsType = "ext4";
