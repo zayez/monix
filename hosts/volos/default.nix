@@ -12,6 +12,7 @@ in
   imports =
   [
     ../../profiles/jvzz
+    ./hardware-configuration.nix
     /etc/nixos/hardware-configuration.nix
     ./file-systems.nix
     (import ../../system/common.nix (args // { user = user; name = name; }))
