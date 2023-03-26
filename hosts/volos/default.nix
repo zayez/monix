@@ -11,7 +11,8 @@ in
 {
   imports =
   [
-    ../../profiles/jvzz
+    <home-manager/nixos>
+    # ../../profiles/jvzz
     ./hardware-configuration.nix
     # /etc/nixos/hardware-configuration.nix
     # ./file-systems.nix
